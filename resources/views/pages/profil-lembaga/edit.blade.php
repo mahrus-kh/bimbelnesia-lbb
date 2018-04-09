@@ -21,9 +21,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-2 col-sm-2 col-xs-12">Logo<span class="required">*</span></label>
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12">Logo</label>
                             <div class="col-md-4 col-sm-4 col-xs-12">
                                 <input type="file" name="logo_image" class="form-control">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                (File: *.jpeg/jpg/png Max. 500 Kb)
                             </div>
                         </div>
                         <div class="form-group">
@@ -102,7 +105,7 @@
         <div class="col-md-2 col-sm-3 col-xs-12">
             <div class="x_panel">
                 <div class="x_content">
-                    <img src="" alt="logo-image" class="img-responsive">
+                    <img src="{{ env('API_BASE_IMAGE') }}/{{ $profil->logo_image }}" alt="logo-image" class="img-responsive">
                 </div>
             </div>
         </div>
@@ -120,7 +123,10 @@
                     $.ajax({
                         type: "POST",
                         url: "{{ env('API_URL') }}/lembaga/{{ $profil->id }}",
-                        data: $("#profil-form").serialize(),
+                        // data: $("#profil-form").serialize(),
+                        data: new FormData($("#profil-form")[0]),
+                        contentType: false,
+                        processData: false,
                         success: function (data) {
                             window.location.reload()
                         }

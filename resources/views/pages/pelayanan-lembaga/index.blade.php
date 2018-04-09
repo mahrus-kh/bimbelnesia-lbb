@@ -32,15 +32,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($api_request->excellence as $row)
-                                <tr>
-                                    <td>{{ $row->excellence }}</td>
-                                    <td>
-                                        <a onclick="edit_excellence({{ $row->id }})" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
-                                        <a onclick="destroy_excellence({{ $row->id }})" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -67,15 +58,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($api_request->facility as $row)
-                            <tr>
-                                <td>{{ $row->facility }}</td>
-                                <td>
-                                    <a onclick="edit_facility({{ $row->id }})" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
-                                    <a onclick="destroy_facility({{ $row->id }})" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -104,21 +86,25 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($api_request->study_program as $row)
-                            <tr>
-                                <td>{{ $row->study_program }}</td>
-                                <td>
-                                    <a onclick="edit_study_program({{ $row->id }})" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
-                                    <a onclick="destroy_study_program({{ $row->id }})" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
+    {{--Modal Excellence--}}
+    @include('pages.pelayanan-lembaga.modal.modal-excellence')
+    {{--End Modal Excellence--}}
+
+    {{--Modal Facility--}}
+    @include('pages.pelayanan-lembaga.modal.modal-facility')
+    {{--End Modal Facility--}}
+
+    {{--Modal Facility--}}
+    @include('pages.pelayanan-lembaga.modal.modal-study-program')
+    {{--End Modal Facility--}}
+
 @endsection
 
 @section('javascript')
@@ -128,6 +114,5 @@
     @include('pages.pelayanan-lembaga.blade-js.facility')
 
     @include('pages.pelayanan-lembaga.blade-js.study-program')
-
 
 @endsection

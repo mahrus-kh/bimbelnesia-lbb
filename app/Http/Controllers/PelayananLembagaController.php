@@ -13,9 +13,9 @@ class PelayananLembagaController extends Controller
      */
     public function index()
     {
-        $api_request = json_decode(file_get_contents(env('API_URL') . '/pelayanan-lembaga/1'));
+//        $api_request = json_decode(file_get_contents(env('API_URL') . '/pelayanan-lembaga/1'));
 
-        return view('pages.pelayanan-lembaga.index', compact('api_request'));
+        return view('pages.pelayanan-lembaga.index');
     }
 
     /**

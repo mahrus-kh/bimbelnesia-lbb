@@ -4,7 +4,7 @@
         <div class="col-md-8 col-sm-8 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Tutoring Agency</h2>
+                    <h2>Profil Lembaga</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a href="{{ route('profil.edit') }}"><i class="fa fa-edit"></i> Edit Profil</a></li>
                     </ul>
@@ -15,7 +15,7 @@
                         <div class="col-md-3 col-sm-3 col-xs-3 profile_left">
                             <div class="profile_img">
                                 <div id="crop-avatar">
-                                    <img class="img-responsive avatar-view" src="{{ asset('images/logolbb.png') }}" alt="Avatar">
+                                    <img class="img-responsive avatar-view" src="{{ env('API_BASE_IMAGE') }}/{{ $profil->logo_image }}" alt="Avatar">
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,20 @@
                                         <label for="" class="label label-default">{{ $category }}</label>
                                     @endforeach
                                 </li>
-                                <li>Rating : {{ $profil->rating }}</li>
+                                <li>Rating :
+                                    @php $star =  $profil->rating ; @endphp
+                                    @for($i=0;$i<5;$i++)
+                                        @if($star >= 1)
+                                            <i class="fa fa-star"></i>
+                                        @elseif ($star >= 0.5 && $star < 1  )
+                                            <i class="fa fa-star-half-o"></i>
+                                        @elseif($star < 0.5)
+                                            <i class="fa fa-star-o"></i>
+                                        @endif
+                                        @php $star =  $star - 1; @endphp
+                                    @endfor
+                                    ({{ $profil->rating }})
+                                </li>
                                 <li>Total Views : {{ $profil->total_views }}</li>
                             </ul>
                         </div>
@@ -59,9 +72,9 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Contacts</h2>
+                    <h2>Kontak</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a onclick="edit_contact()" class="dropdown-toggle"><i class="fa fa-edit"></i> Edit Contact</a></li>
+                        <li><a onclick="edit_contact()" class="dropdown-toggle"><i class="fa fa-edit"></i> Edit Kontak</a></li>
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                         </li>
                     </ul>
@@ -88,6 +101,8 @@
 @endsection
 
 @section('javascript')
+
+    @include('pages.profil-lembaga.blade-js.profil')
 
     @include('pages.profil-lembaga.blade-js.contact')
 

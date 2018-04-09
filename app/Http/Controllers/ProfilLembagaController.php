@@ -13,10 +13,11 @@ class ProfilLembagaController extends Controller
      */
     public function index()
     {
-        $api_request = json_decode(file_get_contents(env('API_URL') . '/lembaga/1'));
+        $id = 1;
+        $api_request = json_decode(file_get_contents(env('API_URL') . '/lembaga/' . $id)) ;
         $profil = $api_request->data->profil;
 
-        return view('pages.profil-lembaga.index', compact('profil','contact'));
+        return view('pages.profil-lembaga.index', compact('profil'));
     }
 
     /**

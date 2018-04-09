@@ -29,15 +29,15 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-                <form action="" method="POST">
+                <form method="POST" id="login-form">
                     {{ csrf_field() }}
                     {{ method_field('POST') }}
                     <h1>Login Lembaga</h1>
                     <div>
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" required>
+                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" minlength="5" maxlength="255" required>
                     </div>
                     <div>
-                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        <input type="password" class="form-control" name="password" placeholder="Password" minlength="8" maxlength="255" required>
                     </div>
                     <div>
                         <input type="submit" class="btn btn-success" value="Log In">
@@ -56,6 +56,7 @@
                     </div>
                 </form>
             </section>
+            <div class="tempat"></div>
         </div>
         <div id="register" class="animate form registration_form">
             <section class="login_content">
@@ -87,5 +88,9 @@
 
 <!-- jQuery -->
 <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap Validator -->
+<script src="{{ asset('assets/vendors/bootstrap-validator/validator.min.js') }}"></script>
 </body>
 </html>
+
+@include('pages.auth.blade-js.login-js')

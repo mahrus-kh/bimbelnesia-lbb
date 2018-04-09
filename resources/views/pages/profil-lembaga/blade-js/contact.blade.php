@@ -1,14 +1,18 @@
 <script type="text/javascript">
     var id_contact;
+    var token;
     $(document).ready(function () {
+        token = "Bearer " + getUrlParamenter('token')
         contact_load()
     });
     function contact_load() {
         $.ajax({
             type: "GET",
-            url : "{{ env('API_URL') }}/contact/{{ $profil->id }}",
+            url : "{{ env('API_URL') }}/contact/1",
             dataType: "JSON",
-            success: function (data) {
+            headers: {Authorization: token},
+            success: function (data, textStatus, header) {
+                token = "Bearer " + header.getResponseHeader('Authorization')
                 id_contact = data.id
                 $("#website").html(data.website)
                 $("#office_phone").html(data.office_phone)
@@ -19,7 +23,7 @@
                 $("#other_contacts").html(data.other_contacts)
             },
             error: function () {
-                alert("Something Wrong !")
+                window.location.replace("{{ route('login') }}")
             }
         });
     }

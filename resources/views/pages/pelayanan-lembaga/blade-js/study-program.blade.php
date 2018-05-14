@@ -7,7 +7,13 @@
             serverSide: true,
             searching: false,
             bLengthChange: false,
-            ajax: "{{ env('API_URL') }}/study-program/1/datatables",
+            ajax: {
+                headers: {Authorization: Cookies.get('token-auth')},
+                url: "{{ env('API_URL') }}/study-program/"+ Cookies.get('token') +"/datatables",
+                error: function () {
+                    window.location.replace("{{ route('login') }}")
+                }
+            },
             columns: [
                 {data: 'study_program', name: 'study_program'},
                 {data: 'cost', name: 'cost'},
@@ -15,9 +21,12 @@
                 ]
         });
     });
+    function reloadStudyProgram() {
+        study_program_dt.ajax.reload()
+    }
     function create_study_program() {
         $('[name=_method]').val("POST")
-        url_study_program = "{{ env('API_URL') }}/study-program/1"
+        url_study_program = "{{ env('API_URL') }}/study-program/" + Cookies.get('token')
         $("#study-program-modal-label").html("Tambah Paket Program Belajar")
         $("#study-program-modal-btn").attr("class", "btn btn-success")
         $("#study-program-modal-btn").html("SAVE")
@@ -34,6 +43,7 @@
         $.ajax({
             type: "GET",
             url: "{{ env('API_URL') }}/study-program/" + id + '/edit',
+            headers: {Authorization: Cookies.get('token-auth')},
             dataType: "JSON",
             success: function (data) {
                 $('[name=study_program]').val(data.study_program)
@@ -41,7 +51,7 @@
                 $('.study-program-modal').modal("show")
             },
             error: function () {
-                alert("Not Found")
+                alert("Something Wrong !")
             }
         });
     }
@@ -51,11 +61,12 @@
                 $.ajax({
                     type: "POST",
                     url: url_study_program,
+                    headers: {Authorization: Cookies.get('token-auth')},
                     data: $('.study-program-modal form').serialize(),
                     success: function (data) {
                         $('.study-program-modal').modal("hide")
                         $('.study-program-modal form')[0].reset()
-                        study_program_dt.ajax.reload();
+                        study_program_dt.ajax.reload()
                     },
                     error: function () {
                         alert("Something Wrong !")
@@ -70,6 +81,7 @@
             $.ajax({
                 type: "POST",
                 url : "{{ env('API_URL') }}/study-program/" + id,
+                headers: {Authorization: Cookies.get('token-auth')},
                 data: {_method: "DELETE", _token: "{{ csrf_token() }}"},
                 success: function (data) {
                     study_program_dt.ajax.reload();

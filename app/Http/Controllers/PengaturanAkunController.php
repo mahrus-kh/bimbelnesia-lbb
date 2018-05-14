@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProfilLembagaController extends Controller
+class PengaturanAkunController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ProfilLembagaController extends Controller
      */
     public function index()
     {
-        return view('pages.profil-lembaga.index');
+        return view('pages.pengaturan-akun.index');
     }
 
     /**
@@ -54,13 +54,9 @@ class ProfilLembagaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-//        $api_request = json_decode(file_get_contents(env('API_URL') . '/lembaga/1/edit'));
-//        $profil = $api_request->data->profil;
-//        $category = $api_request->data->category;
-//        $sub_category = $api_request->data->sub_category;
-        return view('pages.profil-lembaga.edit');
+        //
     }
 
     /**
@@ -70,19 +66,9 @@ class ProfilLembagaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $data = [
-            '_method' => "PATCH",
-            'tutoring_agency' => $request->tutoring_agency,
-            'category_id' => $request->category_id,
-            'sub_category_id' => $request->sub_category_id,
-            'address' => $request->address,
-            'description' => $request->descriptions,
-            'tags' => explode(",", $request->tags),
-        ];
-
-        return $data;
+        //
     }
 
     /**

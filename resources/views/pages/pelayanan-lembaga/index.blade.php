@@ -5,8 +5,8 @@
             <div class="x_panel">
                 <div class="x_content">
                     <h2>
-                        Bimbingan Belajar Terpadu Forum Guru Malang
-                        <small><label for="" class="label bg-green">Verified</label></small>
+                        <text id="tutoring_agency"></text>
+                        <small id="verified"></small>
                     </h2>
                 </div>
             </div>
@@ -16,9 +16,9 @@
                 <div class="x_title">
                     <h2>Keunggulan</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a onclick="create_excellence()" class="dropdown-toggle"><i class="fa fa-plus"></i> Add New</a></li>
+                        <li><a onclick="create_excellence()" class="dropdown-toggle"><i class="fa fa-plus"></i></a></li>
+                        <li><a onclick="reloadExcellence()" class="dropdown-toggle"><i class="fa fa-refresh"></i></a></li>
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                        </li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -43,9 +43,9 @@
                 <div class="x_title">
                     <h2>Fasilitas</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a onclick="create_facility()" class="dropdown-toggle"><i class="fa fa-plus"></i> Add New</a></li>
+                        <li><a onclick="create_facility()" class="dropdown-toggle"><i class="fa fa-plus"></i></a></li>
+                        <li><a onclick="reloadFacility()" class="dropdown-toggle"><i class="fa fa-refresh"></i></a></li>
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                        </li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -70,9 +70,9 @@
                 <div class="x_title">
                     <h2>Paket Program Belajar</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a onclick="create_study_program()" class="dropdown-toggle"><i class="fa fa-plus"></i> Add New</a></li>
+                        <li><a onclick="create_study_program()" class="dropdown-toggle"><i class="fa fa-plus"></i></a></li>
+                        <li><a onclick="reloadStudyProgram()" class="dropdown-toggle"><i class="fa fa-refresh"></i></a></li>
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                        </li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -108,6 +108,8 @@
 @endsection
 
 @section('javascript')
+
+    @include('pages.pelayanan-lembaga.blade-js.profil-singkat')
 
     @include('pages.pelayanan-lembaga.blade-js.excellence')
 

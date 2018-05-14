@@ -15,57 +15,33 @@
                         <div class="col-md-3 col-sm-3 col-xs-3 profile_left">
                             <div class="profile_img">
                                 <div id="crop-avatar">
-                                    <img class="img-responsive avatar-view" src="{{ env('API_BASE_IMAGE') }}/{{ $profil->logo_image }}" alt="Avatar">
+                                    <img class="img-responsive avatar-view" id="logo-image" src="" alt="Avatar">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                            <h3>{{ $profil->tutoring_agency }}
-                                <small>
-                                    @if($profil->verified == 0)
-                                        <label for="" class="label label-warning">Unverified</label>
-                                    @elseif($profil->verified == 1)
-                                        <label for="" class="label bg-green">Verified</label>
-                                    @endif
-                                </small>
+                            <h3>
+                                <text id="tutoring_agency"></text>
+                                <small id="verified"></small>
                             </h3>
                             <ul class="list-unstyled user_data">
-                                <li>Category :
-                                    @foreach($profil->category_id as $category)
-                                        <label for="" class="label label-default">{{ $category }}</label>
-                                    @endforeach
-                                </li>
+                                <li>Kategori : <text id="category"></text></li>
                                 <li>Rating :
-                                    @php $star =  $profil->rating ; @endphp
-                                    @for($i=0;$i<5;$i++)
-                                        @if($star >= 1)
-                                            <i class="fa fa-star"></i>
-                                        @elseif ($star >= 0.5 && $star < 1  )
-                                            <i class="fa fa-star-half-o"></i>
-                                        @elseif($star < 0.5)
-                                            <i class="fa fa-star-o"></i>
-                                        @endif
-                                        @php $star =  $star - 1; @endphp
-                                    @endfor
-                                    ({{ $profil->rating }})
+                                    <text id="star-rating"></text>
+                                    (<text id="rating"></text>)
                                 </li>
-                                <li>Total Views : {{ $profil->total_views }}</li>
+                                <li>Total Views : <text id="total_views"></text></li>
                             </ul>
                         </div>
                     </div>
-                    <b>Alamat : </b> {{ $profil->address }}
                     <div class="ln_solid"></div>
-                    <b>Description : </b> {{ $profil->description }}
+                    <b>Alamat : </b> <text id="address"></text>
                     <div class="ln_solid"></div>
-                    <b>Sub Category : </b>
-                    @foreach($profil->sub_category_id as $sub_category)
-                        <label for="" class="label label-default">{{ $sub_category }}</label>
-                    @endforeach
+                    <b>Deskripsi : </b> <text id="description"></text>
                     <div class="ln_solid"></div>
-                    <b>Tags : </b>
-                    @foreach($profil->tags as $tag)
-                        <label for="" class="label label-default">#{{ $tag }}</label>
-                    @endforeach
+                    <b>Sub Kategori : </b> <text id="sub_cateogry"></text>
+                    <div class="ln_solid"></div>
+                    <b>Tags : </b> <text id="tags"></text>
                 </div>
             </div>
         </div>

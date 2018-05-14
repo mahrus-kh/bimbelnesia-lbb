@@ -9,7 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- PNotify -->
+    <!-- Font Awesome -->
     <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
     <link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
@@ -19,7 +19,6 @@
     <link href="{{ asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
     <!-- bootstrap-progressbar -->
     <link href="{{ asset('assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="{{ asset('assets/build/css/custom.min.css') }}" rel="stylesheet">
 </head>

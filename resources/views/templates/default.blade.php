@@ -16,10 +16,10 @@
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
                     <div class="profile_pic">
-                        <img src="{{ asset('images/admin.png') }}" alt="..." class="img-circle profile_img">
+                        <img src="{{ asset('images/admin-lembaga.png') }}" alt="..." class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
-                        <h2>Mahrus Khomaini</h2>
+                        <h2 id="account-name-sidebar"></h2>
                         <span>Online</span>
                     </div>
                 </div>

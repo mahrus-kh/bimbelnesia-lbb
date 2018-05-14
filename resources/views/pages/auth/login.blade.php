@@ -13,6 +13,9 @@
     <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- PNotify -->
+    <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
     <!-- NProgress -->
     <link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- Animate.css -->
@@ -88,6 +91,11 @@
 
 <!-- jQuery -->
 <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
+<!-- js Cookie -->
+<script src="{{ asset('assets/vendors/js-cookie/js.cookie.js') }}"></script>
+<!-- PNotify -->
+<script src="{{ asset('assets/vendors/pnotify/dist/pnotify.js') }}"></script>
+<script src="{{ asset('assets/vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
 <!-- Bootstrap Validator -->
 <script src="{{ asset('assets/vendors/bootstrap-validator/validator.min.js') }}"></script>
 </body>

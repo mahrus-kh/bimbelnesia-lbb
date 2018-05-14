@@ -1,5 +1,7 @@
 <!-- jQuery -->
 <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
+<!-- js Cookie -->
+<script src="{{ asset('assets/vendors/js-cookie/js.cookie.js') }}"></script>
 <!-- jQuery Tags Input -->
 <script src="{{ asset('assets/vendors/jquery.tagsinput/src/jquery.tagsinput.js') }}"></script>
 <!-- Bootstrap -->

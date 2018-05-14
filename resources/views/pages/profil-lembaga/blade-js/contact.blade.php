@@ -1,18 +1,16 @@
 <script type="text/javascript">
-    var id_contact;
-    var token;
     $(document).ready(function () {
-        token = "Bearer " + getUrlParamenter('token')
         contact_load()
     });
     function contact_load() {
         $.ajax({
             type: "GET",
-            url : "{{ env('API_URL') }}/contact/1",
+            url : "{{ env('API_URL') }}/contact/" + Cookies.get('token'),
             dataType: "JSON",
-            headers: {Authorization: token},
+            headers: {Authorization: Cookies.get('token-auth')},
             success: function (data, textStatus, header) {
-                token = "Bearer " + header.getResponseHeader('Authorization')
+                // Cookies.set('token-auth', header.getResponseHeader('Authorization'))
+                // alert(header.getResponseHeader('Authorization'))
                 id_contact = data.id
                 $("#website").html(data.website)
                 $("#office_phone").html(data.office_phone)
@@ -30,7 +28,8 @@
     function edit_contact() {
         $.ajax({
             type: "GET",
-            url : "{{ env('API_URL') }}/contact/{{ $profil->id }}",
+            url : "{{ env('API_URL') }}/contact/" + Cookies.get('token') ,
+            headers: {Authorization: Cookies.get('token-auth')},
             dataType: "JSON",
             success: function (data) {
                 $('[name=website]').val(data.website)
@@ -52,7 +51,8 @@
             if (!e.isDefaultPrevented()){
                 $.ajax({
                     type: "POST",
-                    url: "{{ env('API_URL') }}/contact/{{ $profil->id }}",
+                    url: "{{ env('API_URL') }}/contact/" + id_contact,
+                    headers: {Authorization: Cookies.get('token-auth')},
                     data: $('.contact-modal form').serialize(),
                     success: function (data) {
                         $('.contact-modal').modal("hide")
